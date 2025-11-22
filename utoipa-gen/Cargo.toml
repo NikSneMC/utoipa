@@ -10,12 +10,12 @@ repository = "https://github.com/juhaku/utoipa"
 authors = ["Juha Kukkonen <juha7kukkonen@gmail.com>"]
 rust-version.workspace = true
 include = [
-    "README.md",
-    "src/**/*.rs",
-    "LICENSE-APACHE",
-    "LICENSE-MIT",
-    "CHANGELOG.md",
-    "Cargo.toml",
+  "README.md",
+  "src/**/*.rs",
+  "LICENSE-APACHE",
+  "LICENSE-MIT",
+  "CHANGELOG.md",
+  "Cargo.toml",
 ]
 
 [lib]
@@ -34,18 +34,18 @@ url = { version = "2", optional = true }
 
 [dev-dependencies]
 utoipa = { path = "../utoipa", features = [
-    "debug",
-    "uuid",
-    "macros",
+  "debug",
+  "uuid",
+  "macros",
 ], default-features = false }
 serde_json = "1"
 serde = "1"
 actix-web = { version = "4", features = ["macros"], default-features = false }
 axum = { version = "0.8.0", default-features = false, features = [
-    "json",
-    "query",
+  "json",
+  "query",
 ] }
-paste = "1"
+pastey = "0.2"
 rocket = { version = "0.5", features = ["json"] }
 smallvec = { version = "1.10", features = ["serde"] }
 rust_decimal = { version = "1", default-features = false }

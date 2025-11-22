@@ -139,7 +139,7 @@ macro_rules! test_response_types {
     ( $( $name:ident=> $(body: $expected:expr,)? $( $content_type:literal, )? $( headers: $headers:expr, )?
         assert: $( $path:literal = $expectation:literal, $comment:literal )* )* ) => {
         $(
-            paste::paste! {
+            pastey::paste! {
                 test_fn! {
                     module: [<mod_ $name>],
                     responses: (
@@ -154,7 +154,7 @@ macro_rules! test_response_types {
 
             #[test]
             fn $name() {
-                paste::paste! {
+                pastey::paste! {
                     let doc = api_doc!(module: [<mod_ $name>]);
                 }
 
@@ -287,7 +287,7 @@ fn derive_path_with_multiple_responses_via_content_attribute_auto_collect_respon
 
     #[utoipa::path(
         get,
-        path = "/foo", 
+        path = "/foo",
         responses(
             (status = 200, content(
                     (User = "application/vnd.user.v1+json" , example = json!(User {id: "id".to_string()})),
@@ -323,11 +323,11 @@ fn derive_path_with_multiple_examples_auto_collect_schemas() {
 
     #[utoipa::path(
         get,
-        path = "/foo", 
+        path = "/foo",
         responses(
             (status = 200, body = User,
                 examples(
-                    ("Demo" = (summary = "This is summary", description = "Long description", 
+                    ("Demo" = (summary = "This is summary", description = "Long description",
                                 value = json!(User{name: "Demo".to_string()}))),
                     ("John" = (summary = "Another user", value = json!({"name": "John"})))
                  )
@@ -367,16 +367,16 @@ fn derive_path_with_multiple_responses_with_multiple_examples() {
 
     #[utoipa::path(
         get,
-        path = "/foo", 
+        path = "/foo",
         responses(
             (status = 200, content(
-                    (User = "application/vnd.user.v1+json", 
+                    (User = "application/vnd.user.v1+json",
                         examples(
                             ("StringUser" = (value = json!({"id": "1"}))),
                             ("StringUser2" = (value = json!({"id": "2"})))
                         ),
                     ),
-                    (User2 = "application/vnd.user.v2+json", 
+                    (User2 = "application/vnd.user.v2+json",
                         examples(
                             ("IntUser" = (value = json!({"id": 1}))),
                             ("IntUser2" = (value = json!({"id": 2})))
@@ -402,7 +402,7 @@ fn derive_path_with_multiple_responses_with_multiple_examples() {
 fn path_response_with_external_ref() {
     #[utoipa::path(
         get,
-        path = "/foo", 
+        path = "/foo",
         responses(
             (status = 200, body = ref("./MyUser.json"))
         )
@@ -429,7 +429,7 @@ fn path_response_with_inline_ref_type() {
 
     #[utoipa::path(
         get,
-        path = "/foo", 
+        path = "/foo",
         responses(
             (status = 200, response = inline(User))
         )

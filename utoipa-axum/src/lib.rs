@@ -36,7 +36,7 @@
 //!  async fn get_user() -> Json<User> {
 //!     Json(User { id: 1 })
 //!  }
-//!  
+//!
 //!  let (router, api): (axum::Router, OpenApi) = OpenApiRouter::new()
 //!      .routes(routes!(get_user))
 //!      .split_for_parts();
@@ -75,7 +75,7 @@ impl PathItemExt for HttpMethod {
 
 /// re-export paste so users do not need to add the dependency.
 #[doc(hidden)]
-pub use paste::paste;
+pub use pastey::paste;
 
 /// Collect axum handlers annotated with [`utoipa::path`] to [`router::UtoipaMethodRouter`].
 ///

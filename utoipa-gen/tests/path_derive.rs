@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
 
 use insta::assert_json_snapshot;
-use paste::paste;
+use pastey::paste;
 use serde::Serialize;
 use serde_json::{json, Value};
 use std::collections::HashMap;
@@ -1516,13 +1516,13 @@ fn derive_path_with_response_links() {
         get,
         path = "/test-links",
         responses(
-            (status = 200, description = "success response", 
+            (status = 200, description = "success response",
                 links(
                     ("getFoo" = (
-                        operation_id = "test_links", 
-                        parameters(("key" = "value"), ("json_value" = json!(1))), 
-                        request_body = "this is body", 
-                        server(url = "http://localhost") 
+                        operation_id = "test_links",
+                        parameters(("key" = "value"), ("json_value" = json!(1))),
+                        request_body = "this is body",
+                        server(url = "http://localhost")
                     )),
                     ("getBar" = (
                         operation_ref = "this is ref"
